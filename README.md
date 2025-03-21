@@ -94,14 +94,12 @@ npm install
 
 ### **Project Structure**
 ```
-/vessel-game
-│── analytic/        # Analytics module with Python scripts
-│── data/            # Stores game-related data
-│── public/          # Frontend assets
-│── server.js        # Express backend server
-│── package.json     # Project dependencies and scripts
-│── README.md        # Setup instructions
+📂 vessel-game
+ ┣ 📂 analytic       # Python scripts for data analysis
+ ┣ 📂 data           # Stores game-related data
+ ┣ 📂 node_modules   # Dependencies (auto-installed)
+ ┣ 📂 public         # Static assets (images, styles, etc.)
+ ┣ 📜 README.md      # Project documentation
+ ┣ 📜 package.json   # Project config and dependencies
+ ┣ 📜 server.js      # Main Node.js server
 ```
-
-Now you’re ready to run and explore the Vessel Game! 🚀
-
