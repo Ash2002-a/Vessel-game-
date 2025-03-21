@@ -1,0 +1,303 @@
+=== Blood Vessel Game Analysis Report ===
+
+
+Level 1 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 19.69
+  Min: 0.00
+  Max: 35.90
+
+Scores:
+  Average: 305.00
+  Best: 545.00
+  Worst: 185.00
+
+Accuracy:
+  Average: 60.01%
+
+Vessel Statistics:
+  Correct Cuts: 182
+  Wrong Cuts: 22
+  Missed Cuts (correct vessels not cut): 6
+  Total Correct Vessels: 189
+  Total Wrong Vessels: 115
+  Correct Vessel Cut Rate: 0.96
+  Wrong Vessel Cut Rate: 0.19
+
+Movement Patterns:
+  Average Distance: 5431.97 pixels
+  Average Speed: 315.78 pixels/second
+
+==================================================
+
+Level 2 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 8.83
+  Min: 0.01
+  Max: 24.00
+
+Scores:
+  Average: 914.29
+  Best: 1175.00
+  Worst: 760.00
+
+Accuracy:
+  Average: 71.13%
+
+Vessel Statistics:
+  Correct Cuts: 231
+  Wrong Cuts: 2
+  Missed Cuts (correct vessels not cut): 28
+  Total Correct Vessels: 213
+  Total Wrong Vessels: 156
+  Correct Vessel Cut Rate: 1.08
+  Wrong Vessel Cut Rate: 0.01
+
+Movement Patterns:
+  Average Distance: 3002.54 pixels
+  Average Speed: 394.81 pixels/second
+
+==================================================
+
+Level 3 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 15.29
+  Min: 12.30
+  Max: 21.01
+
+Scores:
+  Average: 1286.25
+  Best: 1370.00
+  Worst: 1215.00
+
+Accuracy:
+  Average: 96.67%
+
+Vessel Statistics:
+  Correct Cuts: 66
+  Wrong Cuts: 2
+  Missed Cuts (correct vessels not cut): 26
+  Total Correct Vessels: 75
+  Total Wrong Vessels: 31
+  Correct Vessel Cut Rate: 0.88
+  Wrong Vessel Cut Rate: 0.06
+
+Movement Patterns:
+  Average Distance: 5967.65 pixels
+  Average Speed: 479.89 pixels/second
+
+Distraction Reaction Times:
+  Average: 3.18 seconds
+  Min: 1.53 seconds
+  Max: 6.52 seconds
+
+  By Distraction Type:
+    instrument_request: 3.50 seconds avg
+    warning_alert: 3.53 seconds avg
+    blood_leak: 1.53 seconds avg
+
+==================================================
+
+Level 4 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 8.73
+  Min: 0.01
+  Max: 21.63
+
+Scores:
+  Average: 1609.29
+  Best: 1770.00
+  Worst: 1450.00
+
+Accuracy:
+  Average: 83.12%
+
+Vessel Statistics:
+  Correct Cuts: 178
+  Wrong Cuts: 7
+  Missed Cuts (correct vessels not cut): 23
+  Total Correct Vessels: 173
+  Total Wrong Vessels: 112
+  Correct Vessel Cut Rate: 1.03
+  Wrong Vessel Cut Rate: 0.06
+
+Movement Patterns:
+  Average Distance: 2395.41 pixels
+  Average Speed: 394.37 pixels/second
+
+Distraction Reaction Times:
+  Average: 1.94 seconds
+  Min: 1.41 seconds
+  Max: 2.73 seconds
+
+  By Distraction Type:
+    instrument_request: 2.43 seconds avg
+    blood_leak: 1.56 seconds avg
+    warning_alert: 2.07 seconds avg
+
+==================================================
+
+Level 5 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 15.21
+  Min: 6.99
+  Max: 21.00
+
+Scores:
+  Average: 1912.50
+  Best: 1950.00
+  Worst: 1875.00
+
+Accuracy:
+  Average: 86.25%
+
+Vessel Statistics:
+  Correct Cuts: 31
+  Wrong Cuts: 2
+  Missed Cuts (correct vessels not cut): 9
+  Total Correct Vessels: 41
+  Total Wrong Vessels: 35
+  Correct Vessel Cut Rate: 0.76
+  Wrong Vessel Cut Rate: 0.06
+
+Movement Patterns:
+  Average Distance: 4477.57 pixels
+  Average Speed: 433.61 pixels/second
+
+Distraction Reaction Times:
+  Average: 3.28 seconds
+  Min: 1.88 seconds
+  Max: 4.72 seconds
+
+  By Distraction Type:
+    instrument_request: 2.95 seconds avg
+    warning_alert: 3.62 seconds avg
+
+==================================================
+
+Level 6 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 6.80
+  Min: 0.00
+  Max: 22.84
+
+Scores:
+  Average: 2150.56
+  Best: 2375.00
+  Worst: 2055.00
+
+Accuracy:
+  Average: 76.15%
+
+Vessel Statistics:
+  Correct Cuts: 139
+  Wrong Cuts: 6
+  Missed Cuts (correct vessels not cut): 21
+  Total Correct Vessels: 147
+  Total Wrong Vessels: 90
+  Correct Vessel Cut Rate: 0.95
+  Wrong Vessel Cut Rate: 0.07
+
+Movement Patterns:
+  Average Distance: 2126.63 pixels
+  Average Speed: 435.66 pixels/second
+
+Distraction Reaction Times:
+  Average: 2.35 seconds
+  Min: 1.50 seconds
+  Max: 3.23 seconds
+
+  By Distraction Type:
+    warning_alert: 3.23 seconds avg
+    instrument_request: 2.05 seconds avg
+
+==================================================
+
+Level 7 Analysis:
+--------------------
+Completion Time (seconds):
+  Average: 10.18
+  Min: 0.01
+  Max: 31.51
+
+Scores:
+  Average: 2510.83
+  Best: 2550.00
+  Worst: 2415.00
+
+Accuracy:
+  Average: 57.74%
+
+Vessel Statistics:
+  Correct Cuts: 50
+  Wrong Cuts: 2
+  Missed Cuts (correct vessels not cut): 11
+  Total Correct Vessels: 50
+  Total Wrong Vessels: 51
+  Correct Vessel Cut Rate: 1.00
+  Wrong Vessel Cut Rate: 0.04
+
+Movement Patterns:
+  Average Distance: 3338.51 pixels
+  Average Speed: 380.37 pixels/second
+
+Distraction Reaction Times:
+  Average: 1.81 seconds
+  Min: 1.02 seconds
+  Max: 3.50 seconds
+
+  By Distraction Type:
+    blood_leak: 1.29 seconds avg
+    instrument_request: 1.42 seconds avg
+    warning_alert: 2.26 seconds avg
+
+==================================================
+
+Vessel Metrics Overview:
+------------------------------
+
+Overall Statistics:
+  Correct Vessel Cut Rate: 0.98
+  Wrong Vessel Cut Rate: 0.07
+  Intertwined Vessel Accuracy: 95.93%
+  Non-Intertwined Vessel Accuracy: 94.85%
+
+Effect of Intertwined Vessels:
+  Accuracy Difference: -1.08% (negative means intertwined is harder)
+
+==================================================
+
+Background Distraction Impact Analysis:
+----------------------------------------
+Total background distraction events: 16
+
+calls Impact:
+  Movement Speed: -28.2% change during distraction
+    With distraction: 359.74 pixels/second
+    Without distraction: 501.34 pixels/second
+  Scoring Rate: -76.0% change during distraction
+    With distraction: 2.48 points/second
+    Without distraction: 10.32 points/second
+
+heartRateAlerts Impact:
+  Movement Speed: -47.0% change during distraction
+    With distraction: 254.79 pixels/second
+    Without distraction: 480.69 pixels/second
+  Scoring Rate: -45.8% change during distraction
+    With distraction: 4.37 points/second
+    Without distraction: 8.07 points/second
+
+voiceOvers Impact:
+  Movement Speed: -36.5% change during distraction
+    With distraction: 350.89 pixels/second
+    Without distraction: 552.78 pixels/second
+  Scoring Rate: -69.0% change during distraction
+    With distraction: 2.91 points/second
+    Without distraction: 9.41 points/second
+

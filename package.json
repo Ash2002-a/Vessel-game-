@@ -1,0 +1,22 @@
+{
+    "name": "vessel-game",
+    "version": "1.0.0",
+    "description": "Blood Vessel Cutting Game with Cursor Tracking",
+    "main": "server.js",
+    "scripts": {
+        "preinstall": "cd analytic && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+        "start": "node server.js",
+        "clear": "rm -rf data/* && rm -rf node_modules && rm -rf analytic/venv && rm -rf analytic/analysis_results_*",
+        "analytic": "cd analytic && source venv/bin/activate && python main.py"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.3",
+        "csv-writer": "^1.6.0",
+        "express": "^4.21.2",
+        "path": "^0.12.7",
+        "tone": "^14.7.77"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    }
+}

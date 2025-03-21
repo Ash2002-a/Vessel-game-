@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Vessel Cutting Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <style>
+        canvas {
+            cursor: crosshair;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+
+        .heart-rate-alert {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ff0000;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        .incoming-call {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        .voice-over {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #00ffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 min-h-screen flex flex-col items-center p-8">
+    <div class="container mx-auto text-center max-w-4xl">
+        <h1 class="text-4xl font-bold mb-4 text-white">Blood Vessel Cutting Game</h1>
+
+        <!-- Level Display -->
+        <div id="levelDisplay" class="mb-2 text-white text-xl">
+            Level: <span id="currentLevel">1</span> / 7
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="mb-6">
+            <p class="text-white mb-4">Click the button below to start. This game uses sound effects.</p>
+            <button onclick="startNewGame()"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition duration-200">
+                Start Game
+            </button>
+        </div>
+
+        <!-- Game Instructions -->
+        <div class="bg-gray-800 p-6 rounded-lg mb-6 text-left">
+            <h2 class="text-2xl font-bold mb-3 text-white">How to Play</h2>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Click and drag across vessels to cut them</li>
+                <li>White endpoints: Correct vessel (+10 points)</li>
+                <li>White-Black endpoints: Wrong vessel (-5 points)</li>
+                <li>Complete 7 levels with increasing difficulty:</li>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Level 1-2: Basic vessel cutting</li>
+                    <li>Level 3: Limited field of view</li>
+                    <li>Level 4-5: Intertwined vessels with distractions</li>
+                    <li>Level 6-7: Multiple complex vessels with background distractions</li>
+                </ul>
+                <li>Each level has 60 seconds</li>
+                <li>New vessels appear automatically</li>
+                <li>Watch for distractions outside your field of view! Click them quickly.</li>
+                <li>In later levels, deal with background distractions like calls and alerts.</li>
+                <li><span class="text-yellow-300">NEW:</span> Audio cues for gameplay events</li>
+                <li><span class="text-yellow-300">NEW:</span> Enhanced analytics tracking</li>
+            </ul>
+        </div>
+
+        <!-- Audio Controls -->
+        <div class="bg-gray-800 p-4 rounded-lg mb-6 flex justify-center items-center gap-4">
+            <div class="text-white">Sound:</div>
+            <button id="muteButton" onclick="toggleMute()"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                Mute
+            </button>
+        </div>
+
+        <!-- Score and Timer -->
+        <div class="flex justify-center gap-8 mb-6">
+            <div class="bg-gray-800 p-4 rounded-lg">
+                <p class="text-white text-xl">Score: <span id="score" class="font-bold">0</span></p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg">
+                <p class="text-white text-xl">Time: <span id="timer" class="font-bold">60</span>s</p>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <div class="game-container relative inline-block">
+            <canvas id="gameCanvas" width="800" height="600" class="border-4 border-gray-700 rounded-lg bg-red-600">
+            </canvas>
+
+            <!-- Distraction Indicator -->
+            <div id="distraction-indicator"
+                class="hidden absolute top-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-4 py-2 rounded-lg pulse">
+                Alert
+            </div>
+        </div>
+
+        <!-- Background Distraction Elements -->
+        <div id="heart-rate-alert" class="heart-rate-alert hidden pulse">
+            ❤️ HEART RATE CRITICAL: 150 BPM
+        </div>
+
+        <div id="incoming-call" class="incoming-call hidden pulse">
+            📞 INCOMING CALL: Dr. Smith
+        </div>
+
+        <div id="voice-over" class="voice-over hidden">
+            🔊 "Nurse, prepare additional clamps."
+        </div>
+
+        <!-- Level Complete Modal -->
+        <div id="levelComplete" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+            <div class="bg-gray-800 p-8 rounded-lg text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Level Complete!</h2>
+                <p class="text-xl text-white mb-4">Score: <span id="levelScore">0</span></p>
+                <p class="text-gray-300 mb-4">Get ready for the next level!</p>
+                <button onclick="nextLevel()"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200">
+                    Next Level
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameOver" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+            <div class="bg-gray-800 p-8 rounded-lg text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Game Over!</h2>
+                <p class="text-xl text-white mb-2">Final Score: <span id="finalScore">0</span></p>
+                <p class="text-xl text-white mb-4">Level Reached: <span id="finalLevel">1</span></p>
+                <div class="space-y-4">
+                    <p class="text-gray-300">Can you reach Level 7?</p>
+                    <button onclick="startNewGame()"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200">
+                        Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMute() {
+            const muteButton = document.getElementById('muteButton');
+            if (Tone.getContext().state === 'running') {
+                Tone.getContext().suspend();
+                muteButton.textContent = 'Unmute';
+                muteButton.classList.remove('bg-red-500', 'hover:bg-red-700');
+                muteButton.classList.add('bg-green-500', 'hover:bg-green-700');
+            } else {
+                Tone.getContext().resume();
+                muteButton.textContent = 'Mute';
+                muteButton.classList.remove('bg-green-500', 'hover:bg-green-700');
+                muteButton.classList.add('bg-red-500', 'hover:bg-red-700');
+            }
+        }
+    </script>
+    <script src="game.js"></script>
+</body>
+
+</html>
